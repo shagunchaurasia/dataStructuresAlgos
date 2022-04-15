@@ -48,6 +48,10 @@ function repeatedString(s: string, n: number) {
   return ((n - remainder) / s.length) * count + countA;
 }
 
+console.log(repeatedString("axsxa", 1000));
+
 console.log(repeatedString("a", 1000000000000));
 console.log(repeatedString("x", 970770));
 console.log(repeatedString("afcfffaged", 962645758455));
+
+export default {};

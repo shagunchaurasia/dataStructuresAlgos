@@ -15,7 +15,7 @@ function reverseString(givenString:String ):String{
     return resultStringArray.join("");
 }
 
-
+//One line function 
 function reverseStringTwo(givenString:String):String{
     return givenString.split('').reverse().join("");
 }
