@@ -12,37 +12,19 @@ function twoSumBrute(nums: number[], target: number): number[] {
   return resultArray;
 }
 
-//This solution works only after sorting
-function twoSum(nums: number[], target: number): number[] {
-  let lowest = 0;
-  let highest = nums.length - 1;
-  let initialArray = [...nums];
-  nums.sort((a, b) => a - b);
+function twoSum(nums: number[], target: number) {
+  let hashMap: any = {};
 
-  let result: number[] = [];
-  while (lowest <= highest) {
-    let sum = nums[lowest] + nums[highest];
-    console.log("lowest", lowest, "highest", highest, "sum", sum);
-    console.log("result", result, "nums", nums);
-    if (sum == target) {
-      result.push(nums[lowest], nums[highest]);
-    //   console.log("RESULT", result);
-    //   console.log("Initial Array", initialArray);
-      console.log(initialArray.indexOf(result[0]))
-      console.log(initialArray.indexOf(result[1]));
-      return [initialArray.indexOf(result[0]), initialArray.indexOf(result[1])];
-
-    //   return result;
+  for (let i = 0; i < nums.length; i++) {
+    let compliment = target - nums[i];
+    if(hashMap[nums[i]]>=0){
+      return([hashMap[nums[i]], i])
     }
-    if (sum < target) {
-      lowest++;
-    }
-    if (sum > target) {
-      highest--;
-    }
+    
+    hashMap[compliment] = i;
   }
-  return [initialArray.indexOf(result[0]), initialArray.indexOf(result[1])];
+  
 }
 
 console.log(twoSum([2, 7, 11, 15], 9));
-console.log(twoSum([3, 2, 4], 6));
+// console.log(twoSum([3, 2, 4], 6));

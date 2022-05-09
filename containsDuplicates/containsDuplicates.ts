@@ -1,4 +1,4 @@
-function containsDuplicate(nums: number[]): boolean {
+function containsDuplicateOld(nums: number[]): boolean {
   for (let i = 0; i < nums.length; i++) {
     if (nums.indexOf(nums[i], i + 1) > 0) return true;
   }
@@ -6,13 +6,7 @@ function containsDuplicate(nums: number[]): boolean {
   return false;
 }
 
-console.log(containsDuplicate([1, 2, 3, 4, 5, 6, 7, 8, 1]));
-console.log(containsDuplicate([1, 1, 3, 4, 5, 6, 7, 8]));
-console.log(containsDuplicate([1, 2, 3, 4, 5, 8, 6, 7, 8]));
-console.log(containsDuplicate([1, 2, 3, 4]));
-
-
-function containsDuplicateBetter(nums: number[]): boolean {
+function containsDuplicateMap(nums: number[]): boolean {
   let map: any = {};
   let duplicateResult = false;
   for (let i = 0; i < nums.length; i++) {
@@ -28,6 +22,15 @@ function containsDuplicateBetter(nums: number[]): boolean {
   }
 
   return duplicateResult;
+}
+
+function containsDuplicateBetter(nums: number[]): boolean {
+  const map = {};
+  for (const num of nums) {
+    if (map[num]) return true;
+    map[num] = true;
+  }
+  return false;
 }
 
 console.log(containsDuplicateBetter([1, 2, 3, 4, 5, 6, 7, 8, 1]));

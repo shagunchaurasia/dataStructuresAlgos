@@ -22,12 +22,40 @@ function codeBracketCheckerStack(stringToCheck: string): boolean {
   return stack.length ? false : true;
 }
 
-console.log(codeBracketCheckerStack("{[]]()}"));
-console.log(codeBracketCheckerStack("{[]](}{}{}}})}"));
-console.log(codeBracketCheckerStack("{[]()}{}{}{}{[][][][]()}"));
-console.log(codeBracketCheckerStack(""));
-console.log(codeBracketCheckerStack("{[(])}"));
-console.log(codeBracketCheckerStack("{}[]()(){}"));
-console.log(codeBracketCheckerStack("([)]"));
-console.log(codeBracketCheckerStack("[()]"));
+function isValid(s: string): boolean {
+
+    let stack = [];
+                let lastItem = "";
+
+    for(let i=0;i<s.length;i++){
+        lastItem = stack[stack.length-1]
+        if(s[i]==="(" ||s[i]==="{" || s[i]==="[" ){
+            stack.push(s[i])
+            
+        }
+        
+        else if((s[i]==="}" && lastItem==="{") || (s[i]==="]" && lastItem==="[") || (s[i]===")" && lastItem==="(") ){
+            stack.pop();
+        }
+        
+        else{
+            return false;
+        }
+        
+        console.log(stack)
+        
+    }
+    
+    return stack.length ? false: true;
+};
+
+
+console.log(isValid("{[]]()}"));
+console.log(isValid("{[]](}{}{}}})}"));
+console.log(isValid("{[]()}{}{}{}{[][][][]()}"));
+console.log(isValid(""));
+console.log(isValid("{[(])}"));
+console.log(isValid("{}[]()(){}"));
+console.log(isValid("([)]"));
+console.log(isValid("[()]"));
 
