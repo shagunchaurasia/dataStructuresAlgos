@@ -1,0 +1,1 @@
+Given an array of integers a lucky integer is an integer which has frequency in the array equal to its value
